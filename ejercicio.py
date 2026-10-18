@@ -52,3 +52,27 @@ mostrar_estado()
 #Verificación: Ana debe salir de la cola y aparecer en el historial 
 # como atendida. Al atender nuevamente, debe salir Luis. Cuando la cola 
 #está vacía, la función debe devolver None sin fallar.
+
+#Paso 4: deshacer la última atención
+
+def deshacer_ultima_atencion():
+    if not pila_historial:
+        return None
+
+    solicitud = pila_historial.pop()
+    solicitud["estado"] = "pendiente"
+    cola_pendientes.insert(0, solicitud)
+    return solicitud
+
+
+print("Restaurada:", deshacer_ultima_atencion())
+mostrar_estado()
+#Verificación: si se atendió a Ana y después a Luis, el primer deshacer 
+# devuelve a Luis al inicio; otro deshacer devuelve a Ana antes que Luis. 
+# ¿Por qué?
+#porque al atender a ana, ella pasa a atendidos y luis queda pendiente
+#cuando se atiende a luis, pasa de pendiente a atendido. El primer deshacer devuelve al estado anterior
+#Luis pasa de atendido a pendiente y ana queda igual. Al hacer el segundo deshacer, se vuelve al estado anterior 
+#al que estamos ahorita, por lo que Ana vuelve a estar en pendientes, y estará antes que luis porque 
+#así estaba anteriormente, no solamente devuelve a determinado grupo el deshacer, sino que 
+#mantiene el mismo orden también
