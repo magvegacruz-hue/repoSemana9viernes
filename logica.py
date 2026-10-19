@@ -1,10 +1,3 @@
-#Construye obtener_estadisticas() para devolver la cantidad de pendientes, 
-#atenciones actualmente en el historial y total de solicitudes únicas. Además, 
-# evita registrar una nueva solicitud con el mismo cliente y asunto cuando ya 
-# existe una pendiente equivalente, ignorando mayúsculas y espacios en los extremos.
-
-#Prueba: registrar dos veces «Ana / Wi-Fi» y « ana / wi-fi » solo debe añadir un pendiente.
-#Ahora seria marcelo no tiene agua en vez de ana wifi
 cola_pendientes = []
 pila_historial = []
 siguiente_id = 1
